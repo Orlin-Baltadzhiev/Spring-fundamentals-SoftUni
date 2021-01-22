@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "brands")
 public class BrandEntity extends BaseEntity {
 
 
