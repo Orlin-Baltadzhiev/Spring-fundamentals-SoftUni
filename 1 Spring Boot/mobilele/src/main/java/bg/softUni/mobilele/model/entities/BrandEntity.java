@@ -1,7 +1,6 @@
-package bg.softUni.mobilele.entities;
+package bg.softUni.mobilele.model.entities;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "brands")
