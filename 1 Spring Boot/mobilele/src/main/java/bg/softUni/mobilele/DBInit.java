@@ -3,13 +3,18 @@ package bg.softUni.mobilele;
 import bg.softUni.mobilele.model.entities.BaseEntity;
 import bg.softUni.mobilele.model.entities.BrandEntity;
 import bg.softUni.mobilele.model.entities.ModelEntity;
+import bg.softUni.mobilele.model.entities.OfferEntity;
+import bg.softUni.mobilele.model.entities.enums.EngineEnum;
 import bg.softUni.mobilele.model.entities.enums.ModelCategoryEnum;
+import bg.softUni.mobilele.model.entities.enums.TransmissionEnum;
 import bg.softUni.mobilele.repository.BrandRepository;
 import bg.softUni.mobilele.repository.ModelRepository;
+import bg.softUni.mobilele.repository.OfferRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,11 +22,13 @@ import java.util.List;
 public class DBInit implements CommandLineRunner {
     private final ModelRepository modelRepository;
     private final BrandRepository brandRepository;
+    private final OfferRepository offerRepository;
 
 
-    public DBInit(ModelRepository modelRepository, BrandRepository brandRepository) {
+    public DBInit(ModelRepository modelRepository, BrandRepository brandRepository, OfferRepository offerRepository) {
         this.modelRepository = modelRepository;
         this.brandRepository = brandRepository;
+        this.offerRepository = offerRepository;
     }
     @Transactional
     @Override
@@ -37,10 +44,26 @@ public class DBInit implements CommandLineRunner {
 
         brandRepository.saveAll(List.of(fordBrand, hondaBrand));
 
-        initFiesta(fordBrand);
+        ModelEntity fiestaModel =  initFiesta(fordBrand);
         initEscort(fordBrand);
         intNX750S(hondaBrand);
+        createFiestaOffer(fiestaModel);
     }
+
+    private void createFiestaOffer(ModelEntity modelEntity){
+        OfferEntity fiestaOffer = new OfferEntity();
+        fiestaOffer.setEngine(EngineEnum.GASOLINE);
+        fiestaOffer.setImageUrl("https://media.autoexpress.co.uk/image/private/s--7btEt2wi--/v1562244788/autoexpress/2017/07/dsc_1328-1.jpg");
+        fiestaOffer.setMileage(80000);
+        fiestaOffer.setPrice(BigDecimal.valueOf(10000));
+        fiestaOffer.setYear(2019);
+        fiestaOffer.setDescription("Karana e ot nemska baba. Zimata v garaj");
+        fiestaOffer.setTransmission(TransmissionEnum.MANUAL);
+        fiestaOffer.setModel(modelEntity);
+        setCurrentTimestamps(fiestaOffer);
+        offerRepository.save(fiestaOffer);
+    }
+
     private ModelEntity intNX750S(BrandEntity hondaBrand){
         ModelEntity model750s = new ModelEntity();
         model750s.setName("NC750S");

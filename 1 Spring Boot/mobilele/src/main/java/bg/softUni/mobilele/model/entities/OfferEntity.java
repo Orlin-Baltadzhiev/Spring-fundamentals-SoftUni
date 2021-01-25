@@ -4,6 +4,7 @@ import bg.softUni.mobilele.model.entities.enums.EngineEnum;
 import bg.softUni.mobilele.model.entities.enums.TransmissionEnum;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "offers")
@@ -13,15 +14,16 @@ public class OfferEntity extends BaseEntity {
     private EngineEnum engine;
     private String imageUrl;
     private int mileage;
-    private int price;
+    private BigDecimal price;
     private int year;
+    private String description;
     @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
     @ManyToOne
     private ModelEntity model;
 
-    @ManyToOne
-    private UserEntity user;
+//    @ManyToOne
+//    private UserEntity user;
 
     public EngineEnum getEngine() {
         return engine;
@@ -47,12 +49,20 @@ public class OfferEntity extends BaseEntity {
         this.mileage = mileage;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getYear() {
@@ -78,14 +88,14 @@ public class OfferEntity extends BaseEntity {
     public void setModel(ModelEntity model) {
         this.model = model;
     }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+// TODO -> uncomment when users come into the game
+//    public UserEntity getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(UserEntity user) {
+//        this.user = user;
+//    }
 
     @Override
     public String toString() {
@@ -97,7 +107,7 @@ public class OfferEntity extends BaseEntity {
                 ", year=" + year +
                 ", transmission=" + transmission +
                 ", model=" + model +
-                ", user=" + user +
+//                ", user=" + user +
                 ", id=" + id +
                 ", created=" + created +
                 ", updated=" + updated +
