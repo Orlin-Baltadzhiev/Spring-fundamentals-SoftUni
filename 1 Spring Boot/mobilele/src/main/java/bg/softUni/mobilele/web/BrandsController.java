@@ -1,6 +1,6 @@
-package bg.softUni.mobilele.model.web;
+package bg.softUni.mobilele.web;
 
-import bg.softUni.mobilele.model.service.BrandService;
+import bg.softUni.mobilele.service.BrandService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class BrandsController {
 
     @GetMapping("/all")
     public String allBrands(Model model){
-        model.addAttribute("allBrands", brandService.getAllBrands());
+        model.addAttribute("brands", brandService.getAllBrands());
         return "brands";
     }
 }

@@ -1,4 +1,4 @@
-package bg.softUni.mobilele.model.service;
+package bg.softUni.mobilele.service;
 
 import bg.softUni.mobilele.model.view.BrandViewModel;
 import org.springframework.stereotype.Service;
