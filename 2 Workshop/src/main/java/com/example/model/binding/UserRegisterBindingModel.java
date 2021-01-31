@@ -8,11 +8,11 @@ import javax.validation.constraints.Pattern;
 
 public class UserRegisterBindingModel {
 
-    @Length(min = 2, message = "username length must be minimum two characters!")
+    @Length(min = 2, message = "Username length must be minimum two characters!")
     @NotNull
     private String username;
 
-    @Length(min = 3, message = "username length must be minimum two characters!")
+    @Length(min = 3, message = "Username length must be minimum two characters!")
     @NotNull
     private String password;
 
