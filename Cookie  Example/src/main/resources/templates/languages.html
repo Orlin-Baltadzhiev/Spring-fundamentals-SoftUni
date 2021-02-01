@@ -7,7 +7,7 @@
 <form
         th:action="@{/save}"
         method="post">
-    <select>
+    <select name="lang">
         <option
                 th:each="lang :${all}"
                 th:value="${lang}"
