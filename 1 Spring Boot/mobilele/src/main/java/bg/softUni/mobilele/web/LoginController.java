@@ -17,15 +17,15 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @GetMapping("/users//login")
+    @GetMapping("/users/login")
     public String showLogin(Model model) {
         return "auth-login";
     }
 
-    @PostMapping("/users//login")
+    @PostMapping("/users/login")
     public String login(UserLoginServiceModel model) {
-    if(userService.authenticate(model.getUserName(), model.getPassword())){
-        userService.loginUser(model.getUserName());
+    if(userService.authenticate(model.getUsername(), model.getPassword())){
+        userService.loginUser(model.getUsername());
         return "redirect:/";
     } else  {
         return "redirect:/users/login";

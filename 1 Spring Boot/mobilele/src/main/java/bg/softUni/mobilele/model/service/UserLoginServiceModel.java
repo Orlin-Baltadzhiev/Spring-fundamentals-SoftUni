@@ -2,15 +2,18 @@ package bg.softUni.mobilele.model.service;
 
 public class UserLoginServiceModel {
 
-    private String userName;
+    private String username;
     private String password;
 
-    public String getUserName() {
-        return userName;
+    public UserLoginServiceModel() {
     }
 
-    public UserLoginServiceModel setUserName(String userName) {
-        this.userName = userName;
+    public String getUsername() {
+        return username;
+    }
+
+    public UserLoginServiceModel setUsername(String username) {
+        this.username = username;
         return this;
     }
 

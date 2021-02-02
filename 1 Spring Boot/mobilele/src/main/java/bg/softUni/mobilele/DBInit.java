@@ -8,7 +8,6 @@ import bg.softUni.mobilele.repository.BrandRepository;
 import bg.softUni.mobilele.repository.ModelRepository;
 import bg.softUni.mobilele.repository.OfferRepository;
 import bg.softUni.mobilele.repository.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
