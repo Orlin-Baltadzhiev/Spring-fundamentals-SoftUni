@@ -27,8 +27,9 @@ public class UserRoleEntity {
         return role;
     }
 
-    public void setRole(UserRoleEnum role) {
+    public UserRoleEntity setRole(UserRoleEnum role) {
         this.role = role;
+        return this;
     }
 
     @Override
