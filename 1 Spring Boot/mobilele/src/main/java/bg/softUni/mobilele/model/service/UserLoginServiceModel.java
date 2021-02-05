@@ -1,12 +1,20 @@
 package bg.softUni.mobilele.model.service;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserLoginServiceModel {
 
+    @NotNull
+    @Size(min = 2)
     private String username;
+    @NotNull
+    @Size(min = 3)
     private String password;
 
     public UserLoginServiceModel() {
     }
+
 
     public String getUsername() {
         return username;
@@ -16,6 +24,7 @@ public class UserLoginServiceModel {
         this.username = username;
         return this;
     }
+
 
     public String getPassword() {
         return password;
