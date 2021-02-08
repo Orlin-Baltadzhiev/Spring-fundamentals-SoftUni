@@ -12,7 +12,7 @@ public class UserRegisterBindingModel {
     @NotNull
     private String username;
 
-    @Length(min = 3, message = "Username length must be minimum two characters!")
+    @Length(min = 3, message = "Password length must be minimum three characters!")
     @NotNull
     private String password;
 
