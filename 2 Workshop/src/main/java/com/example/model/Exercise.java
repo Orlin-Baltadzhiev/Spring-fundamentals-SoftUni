@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "exercises")
-public class Execise extends BaseEntity {
+public class Exercise extends BaseEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -18,7 +18,7 @@ public class Execise extends BaseEntity {
     @Column(name = "due_date")
     private LocalDateTime dueDate;
 
-    public Execise() {
+    public Exercise() {
     }
 
     public String getName() {

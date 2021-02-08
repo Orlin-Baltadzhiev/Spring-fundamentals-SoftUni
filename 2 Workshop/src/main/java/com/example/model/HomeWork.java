@@ -22,7 +22,7 @@ public class HomeWork extends BaseEntity {
 
 
     @ManyToOne
-    private Execise execise;
+    private Exercise exercise;
 
     public HomeWork() {
     }
@@ -51,11 +51,11 @@ public class HomeWork extends BaseEntity {
         this.author = author;
     }
 
-    public Execise getExecise() {
-        return execise;
+    public Exercise getExecise() {
+        return exercise;
     }
 
-    public void setExecise(Execise execise) {
-        this.execise = execise;
+    public void setExecise(Exercise exercise) {
+        this.exercise = exercise;
     }
 }
