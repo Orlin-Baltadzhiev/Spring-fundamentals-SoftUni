@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "homework")
-public class HomeWork extends BaseEntity {
+public class Homework extends BaseEntity {
 
     @Column(name = "added_on")
     private LocalDateTime addedOn;
@@ -24,38 +24,42 @@ public class HomeWork extends BaseEntity {
     @ManyToOne
     private Exercise exercise;
 
-    public HomeWork() {
+    public Homework() {
     }
 
     public LocalDateTime getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(LocalDateTime addedOn) {
+    public Homework setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
+        return this;
     }
 
     public String getGitAddress() {
         return gitAddress;
     }
 
-    public void setGitAddress(String gitAddress) {
+    public Homework setGitAddress(String gitAddress) {
         this.gitAddress = gitAddress;
+        return this;
     }
 
     public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public Homework setAuthor(User author) {
         this.author = author;
+        return this;
     }
 
-    public Exercise getExecise() {
+    public Exercise getExercise() {
         return exercise;
     }
 
-    public void setExecise(Exercise exercise) {
+    public Homework setExercise(Exercise exercise) {
         this.exercise = exercise;
+        return this;
     }
 }

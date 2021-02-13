@@ -10,6 +10,9 @@ import com.example.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -56,5 +59,34 @@ public class UserServiceImpl implements UserService {
                 .setId(null)
                 .setUsername(null)
                 .setRole(null);
+    }
+
+    @Override
+    public List<String> findAllUserNames() {
+        return userRepository.findAllUsernames();
+    }
+
+    @Override
+    public void changeRole(String username, RoleNameEnum roleNameEnum) {
+        User user =userRepository
+                .findByUserName(username)
+                .orElse(null);
+
+
+            if (user.getRole().getName() != roleNameEnum) {
+                user.setRole(roleService.findRole(roleNameEnum));
+                userRepository.save(user);
+            }
+
+
+
+    }
+
+    @Override
+    public User findByUserId(Long id) {
+
+        return userRepository
+                .findById(id)
+                .orElse(null);
     }
 }

@@ -19,7 +19,7 @@ public class Comment extends BaseEntity {
     private User author;
 
     @ManyToOne
-    private HomeWork homeWork;
+    private Homework homeWork;
 
 
 
@@ -51,11 +51,11 @@ public class Comment extends BaseEntity {
         this.author = author;
     }
 
-    public HomeWork getHomeWork() {
+    public Homework getHomeWork() {
         return homeWork;
     }
 
-    public void setHomeWork(HomeWork homeWork) {
+    public void setHomeWork(Homework homeWork) {
         this.homeWork = homeWork;
     }
 }
