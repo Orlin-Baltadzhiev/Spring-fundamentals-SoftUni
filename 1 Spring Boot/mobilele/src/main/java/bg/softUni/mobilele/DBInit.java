@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -41,12 +40,9 @@ public class DBInit implements CommandLineRunner {
 
         BrandEntity fordBrand = new BrandEntity();
         fordBrand.setName("Ford");
-        setCurrentTimestamps(fordBrand);
 
         BrandEntity hondaBrand = new BrandEntity();
         hondaBrand.setName("Honda");
-        setCurrentTimestamps(hondaBrand);
-
         brandRepository.saveAll(List.of(fordBrand, hondaBrand));
 
         ModelEntity fiestaModel =  initFiesta(fordBrand);
@@ -71,7 +67,7 @@ public class DBInit implements CommandLineRunner {
         admin.setUsername("admin");
         admin.setUserRoles(List.of(adminRole,userRole));
         admin.setPassword(passwordEncoder.encode("topsecret"));
-        setCurrentTimestamps(admin);
+
         userRepository.save(admin);
 
         UserEntity ani = new UserEntity();
@@ -80,7 +76,7 @@ public class DBInit implements CommandLineRunner {
         ani.setUsername("Anita");
         ani.setUserRoles(List.of(userRole));
         ani.setPassword(passwordEncoder.encode("topsecret"));
-        setCurrentTimestamps(ani);
+
         userRepository.save(ani);
     }
 
@@ -94,7 +90,7 @@ public class DBInit implements CommandLineRunner {
         fiestaOffer.setDescription("Karana e ot nemska baba. Zimata v garaj");
         fiestaOffer.setTransmission(TransmissionEnum.MANUAL);
         fiestaOffer.setModel(modelEntity);
-        setCurrentTimestamps(fiestaOffer);
+
         offerRepository.save(fiestaOffer);
     }
 
@@ -106,7 +102,7 @@ public class DBInit implements CommandLineRunner {
         model750s.setStartYear(2014);
         model750s.setBrand(hondaBrand);
 
-        setCurrentTimestamps(model750s);
+
 
         return modelRepository.save(model750s);
     }
@@ -120,7 +116,7 @@ public class DBInit implements CommandLineRunner {
         escort.setEndYear(2002);
         escort.setBrand(fordBrand);
 
-        setCurrentTimestamps(escort);
+
 
         return modelRepository.save(escort);
     }
@@ -133,16 +129,12 @@ public class DBInit implements CommandLineRunner {
         fiesta.setStartYear(1976);
         fiesta.setBrand(fordBrand);
 
-        setCurrentTimestamps(fiesta);
+
 
         return modelRepository.save(fiesta);
     }
 
-    private static void setCurrentTimestamps(BaseEntity baseEntity){
 
-        baseEntity.setCreated(LocalDateTime.now());
-        baseEntity.setUpdated(LocalDateTime.now());
-    }
 
 
 }

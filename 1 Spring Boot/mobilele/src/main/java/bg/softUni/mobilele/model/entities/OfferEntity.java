@@ -22,8 +22,8 @@ public class OfferEntity extends BaseEntity {
     @ManyToOne
     private ModelEntity model;
 
-//    @ManyToOne
-//    private UserEntity user;
+    @ManyToOne
+    private UserEntity user;
 
     public EngineEnum getEngine() {
         return engine;
@@ -88,14 +88,14 @@ public class OfferEntity extends BaseEntity {
     public void setModel(ModelEntity model) {
         this.model = model;
     }
-// TODO -> uncomment when users come into the game
-//    public UserEntity getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(UserEntity user) {
-//        this.user = user;
-//    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {

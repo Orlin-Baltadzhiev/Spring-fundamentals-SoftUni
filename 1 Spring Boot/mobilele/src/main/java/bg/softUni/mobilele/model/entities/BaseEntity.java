@@ -26,6 +26,17 @@ public class BaseEntity {
         this.id = id;
     }
 
+    @PrePersist
+    public void prePersist(){
+       setCreated((LocalDateTime.now()));
+       setUpdated((LocalDateTime.now()));
+    }
+
+    @PreUpdate
+    public void preUpdate(){
+        setCreated(LocalDateTime.now());
+    }
+
     public LocalDateTime getCreated() {
         return created;
     }
