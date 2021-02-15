@@ -15,7 +15,7 @@ public @interface YearInPastOrPresent {
 
     int minYear();
 
-    Class<?>[] group() default {};
+    Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 }

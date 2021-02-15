@@ -11,4 +11,6 @@ public interface OfferService {
     List<OfferSummeryViewModel> getAllOffers();
 
     long save(OfferServiceModel model);
+
+    void delete (long id);
 }
