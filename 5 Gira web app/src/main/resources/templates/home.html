@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/fragments :: head"></head>
+<body>
+<div class="page-container">
+    <header>
+        <nav th:replace="fragment/fragments :: navigation"></nav>
+    </header>
+    <main class="content-wrap">
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Tasks</span></h1>
+        <hr class="hr-3 w-75 bg-white"/>
+        <form class="mx-auto w-75 " th:each="t : ${task}" th:object="${t}" method="GET" action="/">
+
+            <div class="card-group task-card">
+                <div class="card">
+
+                    <div class="card-title">
+                        <h5 class="card-title">Name</h5>
+                    </div>
+                    <div class="card-footer">
+                        <small th:text="*{name}" >Repair Laptop</small>
+                    </div>
+                </div>
+                <div class="card">
+
+                    <div class="card-title">
+                        <h5 class="card-title">Assigned to</h5>
+                    </div>
+                    <div class="card-footer">
+                        <small th:text="*{user.getUsername()}" >George</small>
+                    </div>
+                </div>
+                <div class="card">
+
+                    <div class="card-title">
+                        <h5 class="card-title">Classification</h5>
+                    </div>
+                    <div class="card-footer">
+                        <th:block th:switch="*{classification.classificationNameEnum.name()}">
+                            <small th:case="SUPPORT" th:text="*{classification.classificationNameEnum.name()}" class="classifications SUPPORT"></small>
+                            <small th:case="BUG" th:text="*{classification.classificationNameEnum.name()}" class="classifications BUG"></small>
+                            <small th:case="FEATURE" th:text="*{classification.classificationNameEnum}" class="classifications FEATURE"></small>
+                            <small th:case="OTHER" th:text="*{classification.getClassificationNameEnum()}" class="classifications OTHER"></small>
+                        </th:block>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <h5 class="card-title">Due Date</h5>
+                    </div>
+                    <div class="card-footer">
+                        <small th:text="*{dueDate}" >2020-08-30</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <h5 class="card-title">Progress</h5>
+                    </div>
+                    <div class="card-footer">
+                        <small th:text="*{progressEnum}">OPEN</small>
+                    </div>
+                </div>
+
+                <a class="button prBtn" th:href="@{/tasks/progress/{id}(id = *{id})}">Progress</a>
+            </div>
+
+        </form>
+    </main>
+
+    <footer th:replace="/fragment/fragments :: footer"></footer>
+
+</div>
+</body>
+</html>
